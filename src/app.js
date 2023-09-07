@@ -16,6 +16,10 @@ const users = [
 // Authentication endpoint (students should implement this)
 app.post('/login', (req, res) => {
   // Implement user authentication logic here
+  if (!user) {
+    return res.status(401).json({ message: 'Authentication failed' });
+  }
+
   // If authentication is successful, generate a JWT token and send it in the response
   // Example token generation:
   // const token = jwt.sign({ userId: user.id, username: user.username }, secretKey);
@@ -24,6 +28,9 @@ app.post('/login', (req, res) => {
 
 // Protected route (students should implement this)
 app.get('/profile', (req, res) => {
+  if (!token) {
+    return res.status(401).json({ message: 'Authorization required' });
+  }
   // Middleware to check for a valid JWT token
   // Implement JWT token verification logic here
   // If the token is valid, students can access the user's data from 'decoded'
