@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
 const app = express();
-const port = 3000;
 const secretKey = 'your-secret-key'; // Replace with your secret key
 
 app.use(bodyParser.json());
@@ -36,10 +35,6 @@ app.get('/profile', (req, res) => {
   // If the token is valid, students can access the user's data from 'decoded'
   // Example response:
   // res.status(201).json({ message: 'Profile data', user: decoded });
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
 });
 
 module.exports = app;
